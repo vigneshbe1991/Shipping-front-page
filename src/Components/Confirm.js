@@ -35,7 +35,6 @@ export class Confirm extends Component {
         
       }
     back = () => {
-        // e.preventDefault();
         this.setState({back:true})
     }
 
@@ -57,13 +56,13 @@ export class Confirm extends Component {
         return (
             <MuiThemeProvider theme={myTheme}>
                 <React.Fragment>
-                <AppBar className="details"> <h2>Confirmation Page</h2></AppBar>
+                <AppBar className="details" position="static"> <h2>Confirmation Page</h2></AppBar>
                 <Grid container spacing={2}
          direction="row" justify="center"
          alignContent="center"
        >
            
-       <Grid item xs={5} style={{marginLeft:'auto',marginRight:'auto'}}>
+       <Grid style={{marginLeft:'auto',marginRight:'auto'}}>
                     <List>
                         
                         <ListItem>

@@ -1,11 +1,16 @@
 import React, {Component} from 'react';
 import { AppBar,Button,TextField,FormControl,Grid } from '@material-ui/core';
-import { ThemeProvider as MuiThemeProvider, createMuiTheme  } from '@material-ui/core/styles';
+import { ThemeProvider as MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import { Redirect } from 'react-router-dom';
 
 
 let theme = createMuiTheme();
 
+const styles = theme => ({
+  button : {
+    margin: 15
+}
+});
 class Shipmentdetail extends Component {
   
     constructor(props) {
@@ -36,34 +41,35 @@ class Shipmentdetail extends Component {
           }
             this.setState({[name]: elementValue});
   }
-
-
     render() {
       const { isSuccess, isFailure,shipped_date,shipment_location,shipment_name,shipment_id } =this.state;
+      
       let enableSubmit = shipped_date && shipment_location && shipment_name && shipment_id;
- 
+
       if(isSuccess){
         return <Redirect to={{
           pathname: '/confirm',
           state: this.state
       }}/>;
-    }
+      };
+
       return (
        <MuiThemeProvider theme={theme}>
        <React.Fragment>
 
-          <AppBar className="details"> <h2> Enter the Shipment Details </h2> </AppBar>
+          <AppBar className="details"
+          position="static"> <h2> Enter the Shipment Details </h2> </AppBar>
         
           <Grid container spacing={1}
          direction="row" justify="center"
          alignContent="center"
        > 
-       <Grid item xs={5} style={{marginLeft:'auto',marginRight:'auto'}}>
+       <Grid item xs={11} style={{marginLeft:'auto',marginRight:'auto'}}>
         <form noValidate autoComplete="off">
         
         {this.state.errormessage}
     
-<FormControl fullWidth>
+    <FormControl fullWidth>
         <TextField
         color='primary'
         required
@@ -117,11 +123,6 @@ class Shipmentdetail extends Component {
       );
     }
   }
-  const styles = {
-    button : {
-        margin: 15
-    }
-}
 
 
 export default Shipmentdetail

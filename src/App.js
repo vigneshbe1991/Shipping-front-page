@@ -7,34 +7,21 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link
 } from "react-router-dom";
-import { Container, Button, AppBar } from '@material-ui/core';
+import { Container,  Grid } from '@material-ui/core';
  
 
 
 function App() {
   return (
     <div className="App">
-      <div>
-      <AppBar className="details"> Failed </AppBar>
-      </div>
-     
-      <div>
-      <Container>
+        
+      <header className="header">Proof Of Concept</header>
+  
+      <Container  maxWidth="sm">
+        <div className="app-container">
+          <Grid>
         <Router>   
-            
-
-        <nav>
-          <ul className="home">
-            <li>
-              <Button variant="outlined" >
-              <Link to="/">Home</Link>
-              </Button>
-            </li>
-          </ul>
-        </nav>
-
 
         <Switch>
         <Route path='/' exact render={()=> 
@@ -49,15 +36,19 @@ function App() {
         <Route path='/home' exact render={()=> 
         <Shipmentdetail />}>  
         </Route>
-        
-        
+  
       </Switch>
       
         </Router>
+        </Grid>
+        </div>
         </Container>
         
-        </div>
-      
+    
+    <footer>
+      <p>Company © Shasta Tek. All rights reserved.</p>
+    </footer>
+
     </div>
   );
 }

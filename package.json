@@ -21,7 +21,6 @@
     "react-snippets": "^1.0.2",
     "react-timezone": "^2.4.0"
   },
-
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
