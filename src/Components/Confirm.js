@@ -34,7 +34,6 @@ export class Confirm extends Component {
         axios.post('https://jsonplaceholder.typicode.com/posts', reqBody)
         .then((response)=> {
           this.setState({isSuccess: true,isFailure: false, data: response.data});
-          console.log(response);
         })
         .catch((error)=> {
           this.setState({isSuccess: false,isFailure: true, data: error});
