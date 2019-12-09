@@ -4,7 +4,14 @@ import { ThemeProvider as MuiThemeProvider, createMuiTheme } from '@material-ui/
 import { Redirect } from 'react-router-dom';
 
 
-let theme = createMuiTheme();
+let theme = createMuiTheme({
+  palette:{
+    secondary:{
+      main:'#64b5f6'
+    },
+  },
+} 
+);
 
 const styles = theme => ({
   button : {
@@ -42,7 +49,7 @@ class Shipmentdetail extends Component {
             this.setState({[name]: elementValue});
   }
     render() {
-      const { isSuccess, isFailure,shipped_date,shipment_location,shipment_name,shipment_id } =this.state;
+      const {isSuccess, isFailure,shipped_date,shipment_location,shipment_name,shipment_id } =this.state;
       
       let enableSubmit = shipped_date && shipment_location && shipment_name && shipment_id;
 
@@ -74,22 +81,27 @@ class Shipmentdetail extends Component {
         color='primary'
         required
         label="Shipment ID"
-          type='text'
-          name='shipment_id'
-          onChange={this.myChangeHandler}
+        InputLabelProps={{style: {fontSize: 12}}}
+        type='text'
+        name='shipment_id'
+        onChange={this.myChangeHandler}
         /></FormControl>
 
 <FormControl fullWidth>
         <TextField
           type='text'
+          required
           label="Shipment Name"
           name='shipment_name'
+          InputLabelProps={{style: {fontSize: 12}}}
           onChange={this.myChangeHandler} 
         /></FormControl>
 <FormControl fullWidth>
         <TextField
           type='text' label="Shipment Location"
+          required
           name='shipment_location'
+          InputLabelProps={{style: {fontSize: 12}}}
           onChange={this.myChangeHandler}
           />
 </FormControl>
@@ -97,16 +109,19 @@ class Shipmentdetail extends Component {
 <FormControl fullWidth>
         <TextField
           type='date' label="Shipment shipped date"
+          required
           name='shipped_date'
           InputLabelProps={{ shrink: true }}
           onChange={this.myChangeHandler}
           />
         </FormControl>
+
         <div>
+          <br/>
         <Button 
             label = "Continue"
             variant="contained" 
-            color="primary"
+            color="secondary"
             disabled={!enableSubmit}
             style = {styles.button}
             onClick={this.continue}

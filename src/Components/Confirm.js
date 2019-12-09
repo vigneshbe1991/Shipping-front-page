@@ -5,7 +5,13 @@ import { Redirect } from 'react-router-dom';
 import { createMuiTheme} from '@material-ui/core/styles'
 import axios from 'axios';
 
-let myTheme = createMuiTheme();
+let myTheme = createMuiTheme({
+    palette:{
+      secondary:{
+        main:'#64b5f6'
+      },
+    },
+  } );
 export class Confirm extends Component {
 
     constructor(props) {
@@ -20,14 +26,15 @@ export class Confirm extends Component {
     }
     
     submitUserData = () => {
-        const {shipment_id,shipment_name,shipment_location,shipped_date } = this.props.location.state;
+        const {shipment_id,shipment_name,shipment_location,shipped_date,shipment_type } = this.props.location.state;
         let reqBody = {
-            shipment_id,shipment_name,shipment_location,shipped_date
+            shipment_id,shipment_name,shipment_location,shipped_date,shipment_type
         }
         
-        axios.post('http://192.168.2.118:4000/shipmentdetails/', reqBody)
+        axios.post('https://jsonplaceholder.typicode.com/posts', reqBody)
         .then((response)=> {
           this.setState({isSuccess: true,isFailure: false, data: response.data});
+          console.log(response);
         })
         .catch((error)=> {
           this.setState({isSuccess: false,isFailure: true, data: error});
@@ -92,19 +99,19 @@ export class Confirm extends Component {
                             secondary={shipped_date}
                             ></ListItemText>
                         </ListItem>
-
+                        
                     </List>
                  <Button 
                     label = "Confirm & Continue"
                     variant="contained" 
-                    color="primary"
+                    color="secondary"
                     style = {styles.button}
                     onClick= {this.continue}> Confirm & Continue </Button>
 
                     <Button 
                     label = "Cancel"
                     variant="contained" 
-                    color="primary"
+                    color="secondary"
                     style = {styles.button}
                     onClick= {this.back}> Cancel</Button>
                          </Grid>
