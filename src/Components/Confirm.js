@@ -7,6 +7,9 @@ import axios from 'axios';
 
 let myTheme = createMuiTheme({
     palette:{
+        primary:{
+            main:'#98303b'
+          },
       secondary:{
         main:'#64b5f6'
       },

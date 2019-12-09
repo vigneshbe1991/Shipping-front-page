@@ -5,6 +5,9 @@ import { AppBar } from '@material-ui/core';
 
 let theme = createMuiTheme({
     palette: {
+        primary:{
+            main:'#98303b'
+          },
     secondary: {
       main: '#827717'},
       },});

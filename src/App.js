@@ -18,7 +18,7 @@ function App() {
         
       <header className="header">Proof Of Concept</header>
   
-      <Container  maxWidth="sm">
+      <Container  maxWidth="lg">
         <div className="app-container">
           <Grid>
         <Router>   

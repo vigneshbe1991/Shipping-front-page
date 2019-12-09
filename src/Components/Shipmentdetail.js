@@ -6,6 +6,9 @@ import { Redirect } from 'react-router-dom';
 
 let theme = createMuiTheme({
   palette:{
+    primary:{
+      main:'#98303b'
+    },
     secondary:{
       main:'#64b5f6'
     },
@@ -66,16 +69,17 @@ class Shipmentdetail extends Component {
 
           <AppBar className="details"
           position="static"> <h2> Enter the Shipment Details </h2> </AppBar>
+
+        {this.state.errormessage}
         
-          <Grid container spacing={1}
+        <Grid container spacing={2}
          direction="row" justify="center"
          alignContent="center"
        > 
-       <Grid item xs={11} style={{marginLeft:'auto',marginRight:'auto'}}>
+       
+       <Grid item lg={6} xs={12} style={{marginLeft:'auto',marginRight:'auto'}}>
         <form noValidate autoComplete="off">
-        
-        {this.state.errormessage}
-    
+         
     <FormControl fullWidth>
         <TextField
         color='primary'
@@ -86,6 +90,7 @@ class Shipmentdetail extends Component {
         name='shipment_id'
         onChange={this.myChangeHandler}
         /></FormControl>
+        <br/> <br/>
 
 <FormControl fullWidth>
         <TextField
@@ -96,6 +101,11 @@ class Shipmentdetail extends Component {
           InputLabelProps={{style: {fontSize: 12}}}
           onChange={this.myChangeHandler} 
         /></FormControl>
+</form>
+</Grid>
+<Grid item lg={6} xs={12} style={{marginLeft:'auto',marginRight:'auto'}}>
+        <form noValidate autoComplete="off">
+    
 <FormControl fullWidth>
         <TextField
           type='text' label="Shipment Location"
@@ -105,6 +115,8 @@ class Shipmentdetail extends Component {
           onChange={this.myChangeHandler}
           />
 </FormControl>
+
+<br/><br/>
 
 <FormControl fullWidth>
         <TextField
@@ -116,9 +128,13 @@ class Shipmentdetail extends Component {
           />
         </FormControl>
 
-        <div>
-          <br/>
-        <Button 
+      </form>
+<br/>
+       {isFailure && <div>Form field issue</div>}
+       
+       </Grid>
+       <Grid>
+       <Button 
             label = "Continue"
             variant="contained" 
             color="secondary"
@@ -126,11 +142,6 @@ class Shipmentdetail extends Component {
             style = {styles.button}
             onClick={this.continue}
             > Continue </Button>  
-</div>
-      </form>
-
-       {isFailure && <div>Form field issue</div>}
-       
        </Grid>
        </Grid>
       </React.Fragment>
